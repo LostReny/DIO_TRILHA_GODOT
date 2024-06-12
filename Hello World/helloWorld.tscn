@@ -9,3 +9,4 @@
 position = Vector2(548, 208)
 texture = ExtResource("1_iw8hj")
 script = ExtResource("2_64s0d")
+speed = 300
