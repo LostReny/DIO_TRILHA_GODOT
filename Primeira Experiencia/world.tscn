@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmnmip8vvpq6a"]
+[gd_scene load_steps=6 format=3 uid="uid://dmnmip8vvpq6a"]
+
+[ext_resource type="PackedScene" uid="uid://btfs7ybei8lif" path="res://objects/box_regular.tscn" id="1_srkju"]
+[ext_resource type="PackedScene" uid="uid://dh38gec353tme" path="res://objects/box_bouncy.tscn" id="2_x0xcb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g8v7k"]
 friction = 0.2
@@ -20,12 +23,11 @@ offset_bottom = 666.0
 color = Color(0.247059, 0.639216, 0.639216, 1)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(119, -78)
-rotation = 0.261799
+position = Vector2(439, 178)
+rotation = 0.626648
 physics_material_override = SubResource("PhysicsMaterial_g8v7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(301, 285)
 shape = SubResource("RectangleShape2D_im1ki")
 
 [node name="ColorRect" type="ColorRect" parent="RigidBody2D/CollisionShape2D"]
@@ -41,26 +43,8 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
-position = Vector2(17, -85)
-rotation = -0.261799
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2(301, 285)
-shape = SubResource("RectangleShape2D_im1ki")
-
-[node name="ColorRect" type="ColorRect" parent="RigidBody2D2/CollisionShape2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="RigidBody2D2" parent="." instance=ExtResource("1_srkju")]
+position = Vector2(228, 57)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -74,3 +58,9 @@ offset_top = 603.0
 offset_right = 1196.0
 offset_bottom = 643.0
 color = Color(0.847059, 0.780392, 0.823529, 1)
+
+[node name="Box Bouncy" parent="." instance=ExtResource("2_x0xcb")]
+position = Vector2(822, 194)
+
+[node name="Box Bouncy2" parent="." instance=ExtResource("2_x0xcb")]
+position = Vector2(594, 261)
