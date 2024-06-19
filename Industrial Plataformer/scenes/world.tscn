@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://emgqcp1d5kws"]
+[gd_scene load_steps=6 format=3 uid="uid://emgqcp1d5kws"]
 
 [ext_resource type="TileSet" uid="uid://b8wuw4g6wnrt7" path="res://tileset/tileset.tres" id="1_0n23c"]
 [ext_resource type="Texture2D" uid="uid://bru1ai48x5dk3" path="res://addons/kenney_alien-ufo-pack/PNG/shipPink_manned.png" id="2_5mvte"]
+[ext_resource type="Texture2D" uid="uid://j2d0htkvknvb" path="res://addons/kenney_alien-ufo-pack/PNG/shipYellow_manned.png" id="3_drmog"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7d5ls"]
-radius = 70.0
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivkcv"]
+radius = 60.0
 
 [node name="World" type="Node2D"]
 
@@ -19,7 +23,8 @@ layer_2/name = "Details Front"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(257, -48)
+visible = false
+position = Vector2(1, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_7d5ls")
@@ -28,3 +33,11 @@ shape = SubResource("CircleShape2D_7d5ls")
 position = Vector2(0, -0.500003)
 scale = Vector2(1.03226, 1.07874)
 texture = ExtResource("2_5mvte")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_ivkcv")
+
+[node name="ShipYellowManned" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("3_drmog")
