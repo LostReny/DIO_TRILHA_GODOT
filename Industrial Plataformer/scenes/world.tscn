@@ -22,6 +22,7 @@ layer_2/tile_data = PackedInt32Array()
 [node name="Player" type="CharacterBody2D" parent="."]
 motion_mode = 1
 script = ExtResource("2_vhr3k")
+speed = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_ivkcv")
