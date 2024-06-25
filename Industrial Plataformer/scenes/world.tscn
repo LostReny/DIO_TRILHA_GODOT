@@ -29,6 +29,7 @@ lerp_factor = 0.15
 shape = SubResource("CircleShape2D_ivkcv")
 
 [node name="ShipYellowManned" type="Sprite2D" parent="Player"]
+unique_name_in_owner = true
 texture = ExtResource("3_drmog")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
