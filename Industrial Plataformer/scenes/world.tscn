@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://emgqcp1d5kws"]
+[gd_scene load_steps=11 format=3 uid="uid://emgqcp1d5kws"]
 
 [ext_resource type="TileSet" uid="uid://b8wuw4g6wnrt7" path="res://tileset/tileset.tres" id="1_0n23c"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_vhr3k"]
 [ext_resource type="Texture2D" uid="uid://j2d0htkvknvb" path="res://addons/kenney_alien-ufo-pack/PNG/shipYellow_manned.png" id="3_drmog"]
+[ext_resource type="Texture2D" uid="uid://bwsnm2wqsq48w" path="res://addons/parallax/game_background_2/layers/sky.png" id="4_wsj8m"]
+[ext_resource type="Texture2D" uid="uid://cbsodox1uc8cw" path="res://addons/parallax/game_background_2/layers/rocks_2.png" id="5_0eljx"]
+[ext_resource type="Texture2D" uid="uid://b4fdbp2v3d5xh" path="res://addons/parallax/game_background_2/layers/clouds_1.png" id="5_4urye"]
+[ext_resource type="Texture2D" uid="uid://daw63wbrvka20" path="res://addons/parallax/game_background_2/layers/rocks_1.png" id="6_5f55s"]
+[ext_resource type="Texture2D" uid="uid://eh380bqgjkwr" path="res://addons/parallax/game_background_2/layers/clouds_2.png" id="6_r8a4d"]
+[ext_resource type="Texture2D" uid="uid://fdh2v2s8flh2" path="res://addons/parallax/game_background_2/layers/clouds_3.png" id="7_g343d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivkcv"]
 radius = 50.0
@@ -35,3 +41,54 @@ unique_name_in_owner = true
 texture = ExtResource("3_drmog")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite_Sky" type="Sprite2D" parent="ParallaxBackground/Sky"]
+texture = ExtResource("4_wsj8m")
+centered = false
+
+[node name="Clouds01" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite_Clouds1" type="Sprite2D" parent="ParallaxBackground/Clouds01"]
+texture = ExtResource("5_4urye")
+centered = false
+
+[node name="Clouds02" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.15, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite_Clouds2" type="Sprite2D" parent="ParallaxBackground/Clouds02"]
+texture = ExtResource("6_r8a4d")
+centered = false
+
+[node name="Clouds03" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite_Clouds3" type="Sprite2D" parent="ParallaxBackground/Clouds03"]
+texture = ExtResource("7_g343d")
+centered = false
+
+[node name="Rocks02" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite_Rocks2" type="Sprite2D" parent="ParallaxBackground/Rocks02"]
+texture = ExtResource("5_0eljx")
+centered = false
+
+[node name="Rocks01" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Rocks1" type="Sprite2D" parent="ParallaxBackground/Rocks01"]
+texture = ExtResource("6_5f55s")
+centered = false
