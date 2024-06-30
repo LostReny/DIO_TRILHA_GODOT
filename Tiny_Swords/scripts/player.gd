@@ -5,7 +5,7 @@ extends CharacterBody2D
 var isRunning: bool = false
 
 func _process(delta: float):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("move_down"):
 		if isRunning:
 			animationPlayer.play("idle")
 			isRunning = false
