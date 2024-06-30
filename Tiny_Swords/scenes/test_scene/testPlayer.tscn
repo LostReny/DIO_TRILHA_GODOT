@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg6i6qi6nvkso"]
+[gd_scene load_steps=4 format=3 uid="uid://cg6i6qi6nvkso"]
 
 [ext_resource type="Texture2D" uid="uid://cxafqc1p582d7" path="res://addons/assets/Tiny Swords/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="1_n271c"]
+[ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="2_mfl5h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kk8oh"]
 line_spacing = 48.0
@@ -79,3 +80,5 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Attack up
 "
+
+[node name="Player" parent="." instance=ExtResource("2_mfl5h")]
