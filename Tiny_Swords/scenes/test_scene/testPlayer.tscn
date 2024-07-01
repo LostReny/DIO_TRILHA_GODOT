@@ -83,3 +83,5 @@ text = "Attack up
 
 [node name="Player" parent="." instance=ExtResource("2_mfl5h")]
 position = Vector2(214, 140)
+motion_mode = 1
+speed = 2.8
