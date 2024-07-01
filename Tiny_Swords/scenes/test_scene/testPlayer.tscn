@@ -9,7 +9,7 @@ line_spacing = 48.0
 [node name="Node2D" type="Node2D"]
 
 [node name="WarriorRed" type="Sprite2D" parent="."]
-position = Vector2(1796, 772)
+position = Vector2(1811, 854)
 texture = ExtResource("1_n271c")
 
 [node name="Label_colluns" type="Label" parent="WarriorRed"]
