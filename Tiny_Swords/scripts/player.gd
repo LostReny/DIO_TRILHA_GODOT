@@ -55,13 +55,14 @@ func _animation():
 			else:
 				animationPlayer.play("idle")
 	
-	#trocar lado da sprite 
-	if inputV.x > 0:
-		#desmarcar flip_h do Sprite2D
-		sprite2D.flip_h = false
-	elif inputV.x < 0:
-		#marcar flip_h do Sprite2D
-		sprite2D.flip_h = true
+	if not isAttacking:
+		#trocar lado da sprite 
+		if inputV.x > 0:
+			#desmarcar flip_h do Sprite2D
+			sprite2D.flip_h = false
+		elif inputV.x < 0:
+			#marcar flip_h do Sprite2D
+			sprite2D.flip_h = true
 	pass
 
 #input do jogador 
@@ -106,11 +107,12 @@ func attack():
 	animationPlayer.play("attack")
 	
 	
-	#atack down e ataque up - animação
-	if inputV.y > 0 :
-		animationPlayer.play("attack_down")
-	elif inputV.y < 0 :
-		animationPlayer.play("attack_up")
+	if not isAttacking:
+		#atack down e ataque up - animação
+		if inputV.y > 0 :
+			animationPlayer.play("attack_down")
+		elif inputV.y < 0 :
+			animationPlayer.play("attack_up")
 	
 	#configurar temporizador
 	attackCooldown = 0.6
@@ -126,7 +128,24 @@ func deal_damage_to_enemies():
 	for body in bodies:
 		if body.is_in_group("enemies"):
 			var enemy: Enemy = body
-			enemy.damage(sword_damage)
+			#direção do enemy para o personagem
+			var dir_enemy = (enemy.position - position).normalized()
+			var dir_attack : Vector2
+			if sprite2D.flip_h:
+				dir_attack = Vector2.LEFT
+			else:
+				dir_attack = Vector2.RIGHT
+			if inputV.y > 0 :
+				dir_attack = Vector2.DOWN
+			elif inputV.y < 0 :
+				dir_attack = Vector2.UP
+			
+			var dot_product = dir_enemy.dot(dir_attack)
+			if dot_product >= 0.3:
+				enemy.damage(sword_damage)
+				#print(dot_product)
+			
 		pass
+	
 
 	pass
