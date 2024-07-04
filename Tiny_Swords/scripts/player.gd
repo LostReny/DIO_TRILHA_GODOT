@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
+@export var speed: float = 2.8
+@export_range(0,1) var my_lerp: float = 0.2
+@export var sword_damage: int = 2
+
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sprite2D: Sprite2D = $Sprite2D
-@export var speed: float = 1.0
-@export_range(0,1) var my_lerp: float = 0.2
 
 var inputV : Vector2 = Vector2(0,0)
 var isRunning: bool = false
@@ -113,4 +115,13 @@ func attack():
 	attackCooldown = 0.6
 	#marcar ataque
 	isAttacking = true
+	
+	pass
+	
+func deal_damage_to_enemies():
+	#buscar inimigos - chamar a função damage - com sword_damage
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		enemy.damage(sword_damage)
+		pass
 	pass

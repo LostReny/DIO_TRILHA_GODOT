@@ -58,7 +58,7 @@ animations = [{
 radius = 23.0
 height = 54.0
 
-[node name="Pawn" type="CharacterBody2D"]
+[node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 script = ExtResource("1_4j45l")
 
