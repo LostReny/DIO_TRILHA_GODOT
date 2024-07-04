@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sprite2D: Sprite2D = $Sprite2D
+@onready var sword_area: Area2D = $SwordArea
 
 var inputV : Vector2 = Vector2(0,0)
 var isRunning: bool = false
@@ -119,9 +120,13 @@ func attack():
 	pass
 	
 func deal_damage_to_enemies():
-	#buscar inimigos - chamar a função damage - com sword_damage
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	for enemy in enemies:
-		enemy.damage(sword_damage)
+	
+	#usa a area da espada para detectar o corpo físico
+	var bodies = sword_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			enemy.damage(sword_damage)
 		pass
+
 	pass
