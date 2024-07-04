@@ -14,6 +14,9 @@ var attackCooldown : float = 0.0
 
 func _process(delta):
 	
+	#colocando a posição do player no game manager
+	GameManager.player_position = position
+	
 	_readInput()
 	
 	_attack_cooldown(delta)
