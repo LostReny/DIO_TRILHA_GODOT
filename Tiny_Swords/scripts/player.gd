@@ -10,7 +10,9 @@ var isRunning: bool = false
 var wasRunning: bool = false
 var isAttacking : bool = false
 var attackCooldown : float = 0.0
-
+var timeSinceLastAttack: float = 0.0
+var comboTimeWindow: float = 0.5
+var isCombo: bool = false
 
 func _process(delta):
 	
@@ -23,6 +25,10 @@ func _process(delta):
 	#sistema de ataque
 	if Input.is_action_just_pressed("attack"):
 		attack()
+	
+	# Atualiza o tempo desde o último ataque
+	if timeSinceLastAttack > 0:
+		timeSinceLastAttack -= delta
 	
 	pass
 
@@ -95,8 +101,15 @@ func attack():
 		return
 	
 	#attack // attack_side_2
-	
+	#se pressionar botão mouse 1 vez : pressionando a segundo 
+	#em um determinado tempo - segunda animação
 	animationPlayer.play("attack")
+	
+	#atack down e ataque up - animação
+	if inputV.y > 0 :
+		animationPlayer.play("attack_down")
+	elif inputV.y < 0 :
+		animationPlayer.play("attack_up")
 	
 	#configurar temporizador
 	attackCooldown = 0.6
