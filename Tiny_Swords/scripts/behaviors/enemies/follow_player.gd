@@ -1,7 +1,17 @@
-extends CharacterBody2D
+extends Node
+
+var enemy : Enemy
 
 @export var speed: float = 1.0
-@onready var animated_sprite2D: AnimatedSprite2D = $AnimatedSprite2D
+
+#var animated_sprite2D: AnimatedSprite2D = $AnimatedSprite2D
+var animated_sprite2D : AnimatedSprite2D
+
+func _ready():
+	# vai pegar o node pai da cena
+	enemy = get_parent()
+	animated_sprite2D = enemy.get_node("AnimatedSprite2D")
+	pass
 
 
 func _physics_process(_delta: float) -> void:
@@ -10,14 +20,14 @@ func _physics_process(_delta: float) -> void:
 	var playerPosition = GameManager.player_position
 	
 	#posição do jogador - posição do inimigo - normalizada
-	var difference = playerPosition - position 
+	var difference = playerPosition - enemy.position 
 	var input_vector = difference.normalized()
 	
 	#movimento player
 	#velocidade
-	velocity = input_vector * speed * 100
+	enemy.velocity = input_vector * speed * 100
 	# velocity / input vector 
-	move_and_slide()
+	enemy.move_and_slide()
 	
 	# girar sprite
 	if input_vector.x > 0:
