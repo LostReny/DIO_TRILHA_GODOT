@@ -33,7 +33,7 @@ func _process(delta):
 	pass
 
 #movimentar o jogador 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	# velocidade
 	var new_velocity = inputV * speed * 100
@@ -72,7 +72,7 @@ func _readInput():
 	inputV = Input.get_vector("move_left","move_right","move_up","move_down")
 	
 	#apagar dead_zone inputV
-	var deadZone = 0.15
+	var _deadZone = 0.15
 	if abs(inputV.x) < 0.15: 
 		inputV.x = 0.0
 	if abs(inputV.y) < 0.15: 
