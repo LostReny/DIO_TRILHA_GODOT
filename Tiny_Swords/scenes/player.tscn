@@ -276,5 +276,6 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
 rotation = 1.5708
+scale = Vector2(1.4, 1.4)
 shape = SubResource("CapsuleShape2D_htpcp")
 debug_color = Color(0.792157, 0.407843, 0.356863, 0.0196078)
