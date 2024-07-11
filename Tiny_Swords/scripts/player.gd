@@ -1,5 +1,10 @@
+class_name Player
+
 extends CharacterBody2D
 
+@export var life: int = 100
+@export var max_life: int = 100
+@export var death_prefab: PackedScene
 @export var speed: float = 2.8
 @export_range(0,1) var my_lerp: float = 0.2
 @export var sword_damage: int = 2
@@ -7,12 +12,14 @@ extends CharacterBody2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sprite2D: Sprite2D = $Sprite2D
 @onready var sword_area: Area2D = $SwordArea
+@onready var hitbox_area: Area2D = $HitboxArea
 
 var inputV : Vector2 = Vector2(0,0)
 var isRunning: bool = false
 var wasRunning: bool = false
 var isAttacking : bool = false
 var attackCooldown : float = 0.0
+var hitboxxCooldown: float = 0.0
 
 
 func _process(delta):
@@ -29,6 +36,9 @@ func _process(delta):
 	#sistema de ataque
 	if Input.is_action_just_pressed("attack"):
 		attack()
+	
+	#processar o dano
+	update_hitbox_detection(delta)
 	
 	pass
 
@@ -122,7 +132,6 @@ func attack():
 	pass
 	
 func deal_damage_to_enemies():
-	
 	#usa a area da espada para detectar o corpo físico
 	var bodies = sword_area.get_overlapping_bodies()
 	for body in bodies:
@@ -146,6 +155,62 @@ func deal_damage_to_enemies():
 				#print(dot_product)
 			
 		pass
-	
 
+	pass
+	
+func update_hitbox_detection(delta):
+	#temporizador
+	hitboxxCooldown -= delta
+	if hitboxxCooldown > 0: return
+	
+	#frequencia 
+	hitboxxCooldown = 0.5
+	
+	#detectar inimigos
+	var bodies = hitbox_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			var damage_amount = 1
+			damage(damage_amount)
+		pass
+	pass
+	
+#valor de dano para retirar da vida que temos 
+func damage(amount: int) -> void:
+	if life <= 0: return
+	life -= amount
+	print("Player recebeu dano de: ", amount, " . A vida total é de: ", life)
+	
+	#piscar inimigo
+	modulate = Color.RED
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self,"modulate", Color.WHITE, 0.3)
+	
+	#processar morte
+	if life <= 0 :
+		die()
+	
+	pass
+
+func die() -> void:
+	if death_prefab:
+		var death_object = death_prefab.instantiate()
+		get_parent().add_child(death_object)
+		death_object.position = position
+	
+	print("player morreu")
+	queue_free()
+	
+	pass
+
+func heal(amount: int):
+	life += amount
+	if life > max_life:
+		life = max_life
+		pass
+	print("cura de ", amount, "vida de ", life )
+	return life
 	pass
