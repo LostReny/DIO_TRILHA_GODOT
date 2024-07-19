@@ -2,12 +2,19 @@ class_name Player
 
 extends CharacterBody2D
 
+@export_category("Life")
 @export var life: int = 100
 @export var max_life: int = 100
 @export var death_prefab: PackedScene
+@export_category("Movement")
 @export var speed: float = 2.8
 @export_range(0,1) var my_lerp: float = 0.2
+@export_category("Sword")
 @export var sword_damage: int = 2
+@export_category("Ritual")
+@export var ritual_damage : int = 1
+@export var ritual_interval : float = 30
+@export var ritual_scene : PackedScene
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sprite2D: Sprite2D = $Sprite2D
@@ -20,6 +27,7 @@ var wasRunning: bool = false
 var isAttacking : bool = false
 var attackCooldown : float = 0.0
 var hitboxxCooldown: float = 0.0
+var ritualCooldown: float = 0.0
 
 
 func _process(delta):
@@ -39,6 +47,9 @@ func _process(delta):
 	
 	#processar o dano
 	update_hitbox_detection(delta)
+	
+	#ritual
+	update_ritual(delta)
 	
 	pass
 
@@ -213,4 +224,19 @@ func heal(amount: int):
 		pass
 	print("cura de ", amount, "vida de ", life )
 	return life
+	pass
+
+func update_ritual(delta: float) -> void:
+	#atualizar temporizador
+	ritualCooldown -= delta
+	if ritualCooldown > 0: return
+	 
+	# resetar temporizador 
+	ritualCooldown = ritual_interval
+	
+	#criar o ritual
+	var ritual = ritual_scene.instantiate()
+	ritual.damage_amount = ritual_damage
+	add_child(ritual)
+	
 	pass
