@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://qaclsh5mu4q2"]
+[gd_scene load_steps=4 format=3 uid="uid://qaclsh5mu4q2"]
 
 [ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="1_nsocp"]
+[ext_resource type="Texture2D" uid="uid://clc00kugu5fky" path="res://addons/assets/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="2_e5txk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icb5h"]
+texture = ExtResource("2_e5txk")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 128)
 
 [node name="TestUi" type="Node2D"]
 
@@ -19,33 +30,6 @@ offset_right = -26.0
 offset_bottom = 50.0
 grow_horizontal = 0
 
-[node name="Gold Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -11.5
-offset_right = -21.0
-offset_bottom = 11.5
-grow_horizontal = 0
-grow_vertical = 2
-text = "0000 gold"
-
-[node name="Meat Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 23.0
-offset_top = -12.5
-offset_right = 104.0
-offset_bottom = 10.5
-grow_vertical = 2
-text = "0000 meat"
-
 [node name="Timer Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -58,3 +42,37 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 text = "00:00"
 horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 14.0
+offset_right = -8.0
+offset_bottom = 92.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_icb5h")
+
+[node name="Gold Label" type="Label" parent="CanvasLayer/Panel2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.0
+offset_top = 14.0
+offset_right = -42.0
+offset_bottom = 37.0
+grow_horizontal = 0
+text = "0000 gold"
+
+[node name="Meat Label" type="Label" parent="CanvasLayer/Panel2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+offset_left = 44.0
+offset_top = 12.0
+offset_right = 125.0
+offset_bottom = 35.0
+text = "0000 meat"
