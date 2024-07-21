@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://oijsnn2mfh4o"]
+[gd_scene load_steps=14 format=3 uid="uid://oijsnn2mfh4o"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_j0gqo"]
 [ext_resource type="PackedScene" uid="uid://b1utfimx2ubvk" path="res://scenes/misc/skull.tscn" id="2_gpuue"]
 [ext_resource type="Texture2D" uid="uid://c7asxpopalxya" path="res://addons/assets/Tiny Swords/Resources/Sheep/HappySheep_Bouncing.png" id="3_0pl6y"]
+[ext_resource type="PackedScene" uid="uid://57eljgjyhpsq" path="res://scenes/test_scene/damage_digit.tscn" id="3_a66lg"]
 [ext_resource type="Script" path="res://scripts/behaviors/enemies/follow_player.gd" id="4_uyy2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwopq"]
@@ -64,6 +65,7 @@ motion_mode = 1
 script = ExtResource("1_j0gqo")
 life = 1
 death_prefab = ExtResource("2_gpuue")
+damage_digit_prefab = ExtResource("3_a66lg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
@@ -80,3 +82,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.137255)
 [node name="FollowPlayer" type="Node" parent="."]
 script = ExtResource("4_uyy2o")
 speed = 1.8
+
+[node name="Damage_digit_marker" type="Marker2D" parent="."]
+position = Vector2(0, -45)
