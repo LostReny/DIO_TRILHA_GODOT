@@ -20,6 +20,7 @@ extends CharacterBody2D
 @onready var sprite2D: Sprite2D = $Sprite2D
 @onready var sword_area: Area2D = $SwordArea
 @onready var hitbox_area: Area2D = $HitboxArea
+@onready var progress_bar: ProgressBar = $HealphProgressBar
 
 var inputV : Vector2 = Vector2(0,0)
 var isRunning: bool = false
@@ -50,6 +51,10 @@ func _process(delta):
 	
 	#ritual
 	update_ritual(delta)
+	
+	#progressbar 
+	progress_bar.max_value = max_life
+	progress_bar.value = life
 	
 	pass
 

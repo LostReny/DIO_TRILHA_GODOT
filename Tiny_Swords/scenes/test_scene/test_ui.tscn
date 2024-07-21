@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://qaclsh5mu4q2"]
+[gd_scene load_steps=5 format=3 uid="uid://qaclsh5mu4q2"]
 
 [ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="1_nsocp"]
 [ext_resource type="Texture2D" uid="uid://clc00kugu5fky" path="res://addons/assets/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="2_e5txk"]
+[ext_resource type="PackedScene" uid="uid://cve0hwu2lpxjp" path="res://scenes/goblin.tscn" id="3_53k8k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icb5h"]
 texture = ExtResource("2_e5txk")
@@ -17,6 +18,7 @@ region_rect = Rect2(32, 48, 128, 128)
 
 [node name="Player" parent="." instance=ExtResource("1_nsocp")]
 position = Vector2(383, 227)
+life = 100
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -76,3 +78,6 @@ offset_top = 12.0
 offset_right = 125.0
 offset_bottom = 35.0
 text = "0000 meat"
+
+[node name="Goblin" parent="." instance=ExtResource("3_53k8k")]
+position = Vector2(697, 114)
