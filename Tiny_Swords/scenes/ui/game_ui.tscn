@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctgfljouhsj74"]
+[gd_scene load_steps=10 format=3 uid="uid://ctgfljouhsj74"]
 
 [ext_resource type="Script" path="res://scripts/systems/ui/game_ui.gd" id="1_fcgw4"]
 [ext_resource type="Texture2D" uid="uid://clc00kugu5fky" path="res://addons/assets/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="1_l1adw"]
+[ext_resource type="Texture2D" uid="uid://dg6ummfo01ex1" path="res://addons/assets/Tiny Swords/Resources/Resources/M_Idle_(NoShadow).png" id="3_ayua6"]
+
+[sub_resource type="SystemFont" id="SystemFont_w7s0m"]
+font_names = PackedStringArray("Bebal")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6rtrw"]
+font = SubResource("SystemFont_w7s0m")
+font_size = 28
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icb5h"]
 texture = ExtResource("1_l1adw")
@@ -13,6 +21,18 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(32, 48, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h4jg"]
+atlas = ExtResource("3_ayua6")
+region = Rect2(36.5815, 51.9929, 60.1794, 48.5168)
+
+[sub_resource type="SystemFont" id="SystemFont_g1bo3"]
+font_names = PackedStringArray("Bebal")
+font_weight = 425
+
+[sub_resource type="LabelSettings" id="LabelSettings_njpfx"]
+font = SubResource("SystemFont_g1bo3")
+font_size = 28
+
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_fcgw4")
 
@@ -21,20 +41,21 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -39.0
-offset_top = 20.0
-offset_right = 35.0
-offset_bottom = 43.0
+offset_left = -37.0
+offset_top = 14.0
+offset_right = 37.0
+offset_bottom = 53.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 text = "00:00"
+label_settings = SubResource("LabelSettings_6rtrw")
 horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -275.0
+offset_left = -178.0
 offset_top = 14.0
 offset_right = -8.0
 offset_bottom = 92.0
@@ -42,26 +63,28 @@ grow_horizontal = 0
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_icb5h")
 
-[node name="Gold Label" type="Label" parent="Panel2"]
+[node name="TextureRect" type="TextureRect" parent="Panel2"]
+layout_mode = 1
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 103.0
+offset_bottom = 62.0
+scale = Vector2(0.650179, 0.650179)
+texture = SubResource("AtlasTexture_6h4jg")
+
+[node name="Meat Label" type="Label" parent="Panel2"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -116.0
-offset_top = 14.0
-offset_right = -42.0
-offset_bottom = 37.0
+offset_left = -88.0
+offset_top = 1.0
+offset_right = -41.0
+offset_bottom = 40.0
 grow_horizontal = 0
-text = "0000 gold"
-
-[node name="Meat Label" type="Label" parent="Panel2"]
-unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-offset_left = 44.0
-offset_top = 12.0
-offset_right = 125.0
-offset_bottom = 35.0
-text = "0000 meat"
+text = "00"
+label_settings = SubResource("LabelSettings_njpfx")
+horizontal_alignment = 1
+vertical_alignment = 1

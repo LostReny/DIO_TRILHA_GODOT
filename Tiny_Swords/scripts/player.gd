@@ -31,6 +31,13 @@ var hitboxxCooldown: float = 0.0
 var ritualCooldown: float = 0.0
 
 
+#sinal quando pegar uma carne 
+signal meat_collected(value: int)
+
+func _ready():
+	GameManager.player = self
+	pass
+
 func _process(delta):
 	
 	#colocando a posição do player no game manager
