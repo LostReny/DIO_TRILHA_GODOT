@@ -17,15 +17,23 @@ func _process(delta):
 	var interval = 60.0 / mobs_per_minute
 	cooldown = interval
 	
+	#checar se o ponto é valido
+	var point = get_point()
+	var world_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = point
+	parameters.collision_mask = 0b1000
+	var result : Array = world_state.intersect_point(parameters, 1)
+	if not result.is_empty(): return
+	
 	#instanciar uma criatura aleatoria
 	# pegar criatura aleatoria / ponto aleatoria
 	#instanciar cena/colocar na posição
 	
 	var index = randi_range(0,creatures.size() - 1)
 	var creature_scene = creatures[index]
-	var point = get_point()
 	var creature = creature_scene.instantiate()
-	creature.global_position = get_point()
+	creature.global_position = point
 	get_parent().add_child(creature)
 	
 	pass
