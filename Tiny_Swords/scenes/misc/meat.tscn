@@ -70,7 +70,6 @@ frame = 6
 frame_progress = 1.0
 offset = Vector2(0, -30)
 script = ExtResource("2_pvwn2")
-regeneration = 20
 
 [node name="Area2D" type="Area2D" parent="."]
 
