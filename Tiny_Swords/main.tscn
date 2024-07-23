@@ -1,7 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://mpfy831tforr"]
 
 [ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="1_hcrkh"]
-[ext_resource type="PackedScene" uid="uid://dfo66x28j5yt2" path="res://scenes/test_scene/test_mob_spanner.tscn" id="2_b8735"]
 [ext_resource type="Texture2D" uid="uid://b5le88ovtpdfo" path="res://addons/assets/Tiny Swords/Deco/03.png" id="2_un5ea"]
 [ext_resource type="Texture2D" uid="uid://blvx3ptu7iygh" path="res://addons/assets/Tiny Swords/Deco/05.png" id="3_1r7ij"]
 [ext_resource type="PackedScene" uid="uid://ctgfljouhsj74" path="res://scenes/ui/game_ui.tscn" id="3_gtk1n"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6flox4vcmknq" path="res://addons/assets/Tiny Swords/Deco/12.png" id="5_vhyrs"]
 [ext_resource type="Texture2D" uid="uid://b36kgdxghdx34" path="res://addons/assets/Tiny Swords/Deco/18.png" id="6_ydea8"]
 [ext_resource type="Texture2D" uid="uid://dnxo64c0rjax8" path="res://addons/assets/Tiny Swords/Terrain/Water/Water.png" id="7_60miw"]
+[ext_resource type="PackedScene" uid="uid://83usjjffl6n2" path="res://scripts/systems/mob_spanner.tscn" id="12_endqh"]
 [ext_resource type="PackedScene" uid="uid://cxcvqxy7ggi45" path="res://scenes/misc/tree.tscn" id="12_j4bv5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_munw3"]
@@ -126,8 +126,7 @@ update_scale = false
 [node name="RemoteTransform2D - mobSpanner" type="RemoteTransform2D" parent="Player"]
 y_sort_enabled = true
 position = Vector2(0, 3)
-remote_path = NodePath("../../TestMobSpanner")
-use_global_coordinates = false
+remote_path = NodePath("../../MobSpanner")
 update_rotation = false
 update_scale = false
 
@@ -240,11 +239,11 @@ position = Vector2(913, 460)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(434, 241)
 
-[node name="TestMobSpanner" parent="." instance=ExtResource("2_b8735")]
-position = Vector2(0, 3)
-
 [node name="WorldLimit" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimit"]
 position = Vector2(-3, -1024)
 shape = SubResource("RectangleShape2D_lauj6")
+
+[node name="MobSpanner" parent="." instance=ExtResource("12_endqh")]
+position = Vector2(434, 244)
