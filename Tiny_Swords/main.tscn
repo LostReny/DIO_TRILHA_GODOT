@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://mpfy831tforr"]
+[gd_scene load_steps=22 format=3 uid="uid://mpfy831tforr"]
 
 [ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="1_hcrkh"]
 [ext_resource type="PackedScene" uid="uid://dfo66x28j5yt2" path="res://scenes/test_scene/test_mob_spanner.tscn" id="2_b8735"]
@@ -94,6 +94,9 @@ sources/3 = SubResource("TileSetAtlasSource_pfkdt")
 sources/4 = SubResource("TileSetAtlasSource_fcqc4")
 sources/6 = SubResource("TileSetAtlasSource_phqyg")
 sources/7 = SubResource("TileSetAtlasSource_lcmq1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lauj6"]
+size = Vector2(5000, 20)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -239,3 +242,9 @@ position = Vector2(434, 241)
 
 [node name="TestMobSpanner" parent="." instance=ExtResource("2_b8735")]
 position = Vector2(0, 3)
+
+[node name="WorldLimit" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimit"]
+position = Vector2(-3, -1024)
+shape = SubResource("RectangleShape2D_lauj6")
