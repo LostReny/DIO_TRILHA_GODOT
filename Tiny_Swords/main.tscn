@@ -112,6 +112,8 @@ layer_2/tile_data = PackedInt32Array(-65560, 262144, 0, 327656, 262144, 0, -3932
 z_index = 1
 position = Vector2(434, 241)
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+
 [node name="Trees" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
@@ -221,3 +223,6 @@ y_sort_enabled = true
 
 [node name="Meat" parent="." instance=ExtResource("4_h66qj")]
 position = Vector2(913, 460)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(434, 241)
