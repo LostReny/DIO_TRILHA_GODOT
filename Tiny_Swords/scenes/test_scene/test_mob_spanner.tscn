@@ -5,3 +5,4 @@
 [node name="TestMobSpanner" type="Node2D"]
 
 [node name="MobSpanner" parent="." instance=ExtResource("2_q040v")]
+position = Vector2(0, 0)
