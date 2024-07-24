@@ -278,3 +278,4 @@ position = Vector2(434, 244)
 [node name="Dificult_System" type="Node" parent="." node_paths=PackedStringArray("mob_spanner")]
 script = ExtResource("13_k0x6d")
 mob_spanner = NodePath("../MobSpanner")
+break_intensity = 0.33
