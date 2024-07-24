@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mpfy831tforr"]
+[gd_scene load_steps=31 format=3 uid="uid://mpfy831tforr"]
 
 [ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="1_hcrkh"]
 [ext_resource type="Texture2D" uid="uid://b5le88ovtpdfo" path="res://addons/assets/Tiny Swords/Deco/03.png" id="2_un5ea"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://83usjjffl6n2" path="res://scripts/systems/mob_spanner.tscn" id="12_endqh"]
 [ext_resource type="PackedScene" uid="uid://cxcvqxy7ggi45" path="res://scenes/misc/tree.tscn" id="12_j4bv5"]
 [ext_resource type="Script" path="res://scripts/systems/dificult_system/dificult_system.gd" id="13_k0x6d"]
+[ext_resource type="Texture2D" uid="uid://c4vejyes7nv50" path="res://addons/assets/Tiny Swords/UI/Ribbons/Ribbon_Red_3Slides.png" id="14_6q6sb"]
+[ext_resource type="Texture2D" uid="uid://clc00kugu5fky" path="res://addons/assets/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="15_dvekl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_munw3"]
 texture = ExtResource("5_so41a")
@@ -101,6 +103,37 @@ size = Vector2(4176, 431.538)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrbhh"]
 size = Vector2(4233, 391.154)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w5k6d"]
+texture = ExtResource("14_6q6sb")
+texture_margin_left = 64.0
+texture_margin_right = 64.0
+axis_stretch_horizontal = 2
+region_rect = Rect2(0, 0, 192, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i4p4o"]
+font_size = 54
+outline_size = 22
+outline_color = Color(0.0862745, 0.109804, 0.180392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4l8yk"]
+texture = ExtResource("15_dvekl")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 128)
+
+[sub_resource type="SystemFont" id="SystemFont_pf614"]
+font_names = PackedStringArray("Lato")
+font_weight = 600
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqocv"]
+font = SubResource("SystemFont_pf614")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -279,3 +312,97 @@ position = Vector2(434, 244)
 script = ExtResource("13_k0x6d")
 mob_spanner = NodePath("../MobSpanner")
 break_intensity = 0.33
+
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="GameOverUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.694118)
+
+[node name="TopPanel" type="Panel" parent="GameOverUI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.5
+offset_top = 27.0
+offset_right = 259.5
+offset_bottom = 154.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_w5k6d")
+
+[node name="GameOver Label" type="Label" parent="GameOverUI/TopPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.5
+offset_top = -38.5
+offset_right = 90.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_i4p4o")
+
+[node name="BottomPanel" type="Panel" parent="GameOverUI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = -176.0
+offset_right = 199.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4l8yk")
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverUI/BottomPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -47.5
+offset_right = 147.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="GameOverUI/BottomPanel/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="TimeSurvivedLabel" type="Label" parent="GameOverUI/BottomPanel/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Time Survived : "
+label_settings = SubResource("LabelSettings_jqocv")
+
+[node name="TimeLabel" type="Label" parent="GameOverUI/BottomPanel/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_jqocv")
+
+[node name="MonstersDefeatedLabel" type="Label" parent="GameOverUI/BottomPanel/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Monsters Defeated : "
+label_settings = SubResource("LabelSettings_jqocv")
+
+[node name="NumberLabel" type="Label" parent="GameOverUI/BottomPanel/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "0000
+"
+label_settings = SubResource("LabelSettings_jqocv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverUI"]
