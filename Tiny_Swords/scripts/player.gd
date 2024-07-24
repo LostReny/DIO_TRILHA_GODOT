@@ -234,7 +234,7 @@ func heal(amount: int):
 	if life > max_life:
 		life = max_life
 		pass
-	print("cura de ", amount, "vida de ", life )
+	#print("cura de ", amount, "vida de ", life )
 	return life
 	pass
 

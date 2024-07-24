@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://mpfy831tforr"]
+[gd_scene load_steps=24 format=3 uid="uid://mpfy831tforr"]
 
 [ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="1_hcrkh"]
 [ext_resource type="Texture2D" uid="uid://b5le88ovtpdfo" path="res://addons/assets/Tiny Swords/Deco/03.png" id="2_un5ea"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dnxo64c0rjax8" path="res://addons/assets/Tiny Swords/Terrain/Water/Water.png" id="7_60miw"]
 [ext_resource type="PackedScene" uid="uid://83usjjffl6n2" path="res://scripts/systems/mob_spanner.tscn" id="12_endqh"]
 [ext_resource type="PackedScene" uid="uid://cxcvqxy7ggi45" path="res://scenes/misc/tree.tscn" id="12_j4bv5"]
+[ext_resource type="Script" path="res://scripts/systems/dificult_system/dificult_system.gd" id="13_k0x6d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_munw3"]
 texture = ExtResource("5_so41a")
@@ -273,3 +274,7 @@ debug_color = Color(0.815686, 0.396078, 0.2, 0.419608)
 
 [node name="MobSpanner" parent="." instance=ExtResource("12_endqh")]
 position = Vector2(434, 244)
+
+[node name="Dificult_System" type="Node" parent="." node_paths=PackedStringArray("mob_spanner")]
+script = ExtResource("13_k0x6d")
+mob_spanner = NodePath("../MobSpanner")

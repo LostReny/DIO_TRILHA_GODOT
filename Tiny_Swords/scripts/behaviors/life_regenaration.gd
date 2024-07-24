@@ -16,6 +16,8 @@ func _on_area_2d_body_entered(body) -> void:
 		var player: Player = body
 		player.heal(_regeneration)
 		player.meat_collected.emit(_regeneration)
+	if body.is_in_group("enemies"):
+		return
 		pass
 	
 	queue_free()

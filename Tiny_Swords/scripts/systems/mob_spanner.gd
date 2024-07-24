@@ -1,3 +1,5 @@
+class_name MobSpanner
+
 extends Node2D
 
 @export var creatures : Array[PackedScene]
