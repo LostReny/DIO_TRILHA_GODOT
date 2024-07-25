@@ -7,13 +7,11 @@ extends CanvasLayer
 
 @export var restar_delay: float = 5.0
 var restart_cooldown : float
-var time_survived : String
-var monsters_defeated : int
 
 
 func _ready():
-	timer_label.text = time_survived
-	number_label.text = str(monsters_defeated)
+	timer_label.text = GameManager.time_elapsed_string
+	number_label.text = str(GameManager.monsters_defeated_counte)
 	restart_cooldown = restar_delay
 	pass
 	
@@ -25,4 +23,6 @@ func _process(delta):
 
 
 func restart_game():
+	GameManager.reset()
+	get_tree().reload_current_scene()
 	pass

@@ -6,6 +6,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_w7s0m"]
 font_names = PackedStringArray("Bebal")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_6rtrw"]
 font = SubResource("SystemFont_w7s0m")
@@ -28,6 +29,7 @@ region = Rect2(36.5815, 51.9929, 60.1794, 48.5168)
 [sub_resource type="SystemFont" id="SystemFont_g1bo3"]
 font_names = PackedStringArray("Bebal")
 font_weight = 425
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_njpfx"]
 font = SubResource("SystemFont_g1bo3")
