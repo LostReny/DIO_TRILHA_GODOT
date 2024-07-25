@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://mpfy831tforr"]
+[gd_scene load_steps=25 format=3 uid="uid://mpfy831tforr"]
 
 [ext_resource type="PackedScene" uid="uid://cisa5sj6f40v4" path="res://scenes/player.tscn" id="1_hcrkh"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iklfg"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b5le88ovtpdfo" path="res://addons/assets/Tiny Swords/Deco/03.png" id="2_un5ea"]
 [ext_resource type="Texture2D" uid="uid://blvx3ptu7iygh" path="res://addons/assets/Tiny Swords/Deco/05.png" id="3_1r7ij"]
 [ext_resource type="PackedScene" uid="uid://ctgfljouhsj74" path="res://scenes/ui/game_ui.tscn" id="3_gtk1n"]
-[ext_resource type="PackedScene" uid="uid://cmlvb866n4sl4" path="res://scenes/misc/meat.tscn" id="4_h66qj"]
 [ext_resource type="Texture2D" uid="uid://sigg2k4hcgcb" path="res://addons/assets/Tiny Swords/Deco/08.png" id="4_i4u6g"]
 [ext_resource type="Texture2D" uid="uid://dxycwtdscd8p6" path="res://addons/assets/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="5_so41a"]
 [ext_resource type="Texture2D" uid="uid://c6flox4vcmknq" path="res://addons/assets/Tiny Swords/Deco/12.png" id="5_vhyrs"]
@@ -241,9 +240,6 @@ position = Vector2(689, 312)
 position = Vector2(1074, -88)
 
 [node name="GameUI" parent="." instance=ExtResource("3_gtk1n")]
-
-[node name="Meat" parent="." instance=ExtResource("4_h66qj")]
-position = Vector2(913, 460)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(434, 241)
