@@ -219,6 +219,7 @@ func damage(amount: int) -> void:
 	pass
 
 func die() -> void:
+	GameManager._end_game()
 	if death_prefab:
 		var death_object = death_prefab.instantiate()
 		get_parent().add_child(death_object)

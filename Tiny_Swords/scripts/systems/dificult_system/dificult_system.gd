@@ -14,6 +14,9 @@ var timer: float = 0.0
 
 
 func _process(delta):
+	#ignorar game over 
+	if GameManager.is_game_over : return
+	
 	timer += delta
 	
 	#dificuldade linear

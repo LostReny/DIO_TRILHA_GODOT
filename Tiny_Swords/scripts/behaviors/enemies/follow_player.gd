@@ -15,6 +15,9 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
+	
+	if GameManager.is_game_over : return
+	
 	#calculando a direção
 	#pega a posição do player através do game manager
 	var playerPosition = GameManager.player_position
